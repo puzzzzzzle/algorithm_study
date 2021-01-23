@@ -1,0 +1,11 @@
+.idea/
+/data/basic.bin
+/logs/**/*
+**/*.pyc
+**/__pycache__
+/data/ignore_file/
+cpp_code/cpp_gen
+**/cmake-build-debug
+**/cmake-build-release
+**/build
+/instance
