@@ -6,7 +6,6 @@
 
 #include <array>
 #include <memory>
-#include <unique_ptr>
 #include "RingBufferInterface.h"
 template <class T>
 class RingBufferArrayImpl : public RingBufferInterface<T> {
