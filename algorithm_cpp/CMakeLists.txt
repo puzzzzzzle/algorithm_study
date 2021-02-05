@@ -17,6 +17,14 @@ set(VERSION_MINOR 0)
 #set(CONAN_ARGS "${CONAN_ARGS} ")
 message("CONAN_ARGS: ${CONAN_ARGS}")
 
+# boost 选项
+option(boost_static "use static boost lib" ON)
+
+# 编译输出地址
+include(cpp_bootstrap/common/CMake/FuncDefs.cmake)
+set(DEFAULT_BIN_DIR ${CMAKE_BINARY_DIR}/bin)
+SetBinDir(${DEFAULT_BIN_DIR})
+
 
 # 设置源码根目录(包含cmake的文件夹将被解析为一个编译target)
 set(SRC_DIR_ROOT ${CMAKE_SOURCE_DIR}/src)
@@ -27,3 +35,4 @@ set(BOOTSTRAP_DIR ${CMAKE_SOURCE_DIR}/cpp_bootstrap)
 
 # 开始加载
 include(cpp_bootstrap/BasicCmake.cmake)
+AddAllSubDir()
