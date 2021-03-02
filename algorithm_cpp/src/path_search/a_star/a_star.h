@@ -87,7 +87,6 @@ class AStar {
 
   public:
   int searching() {
-    LOG_DEBUG("searching " << m_start << "\t" << m_end)
     if (m_start == m_end) {
       m_searchRet = 100;
       return 0;

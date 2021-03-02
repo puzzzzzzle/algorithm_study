@@ -1,0 +1,3 @@
+data/path_find/map_file_simple.txt
+0,0,0,8
+0,0,9,9
