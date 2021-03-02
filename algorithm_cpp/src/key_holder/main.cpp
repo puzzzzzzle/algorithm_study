@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
       } else if (ret == -2) {
         LOG_DEBUG("full\t" << i);
       } else {
-        LOG_DEBUG("fail add ret \t" << ret);
+        LOG_DEBUG("fail add m_searchRet \t" << ret);
       }
     } else {
       ret = holder->Rand(&key);
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
       } else if (ret == 1) {
         LOG_DEBUG("empty\t" << key);
       } else {
-        LOG_DEBUG("fail rem ret\t" << key);
+        LOG_DEBUG("fail rem m_searchRet\t" << key);
       }
     }
   }

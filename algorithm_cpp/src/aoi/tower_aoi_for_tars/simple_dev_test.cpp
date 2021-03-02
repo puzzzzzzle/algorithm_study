@@ -32,7 +32,7 @@ TEST(correct_1, toweraoi_obj) {
   for (int i = 0; i < size; ++i) {
     int type = rand() % maxType;
     objectMap[type][objectBegin + i] =
-        Point(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+        PointType(rand() % config.GlobalWith, rand() % config.GlobalHeight);
     ASSERT_TRUE(towerAoi.AddObject(objectBegin + i,
                                    objectMap[type][objectBegin + i], type));
   }
@@ -41,7 +41,7 @@ TEST(correct_1, toweraoi_obj) {
   // move obj
   for (auto &itype : objectMap) {
     for (auto &obj : itype.second) {
-      Point p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+      PointType p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
       ASSERT_TRUE(towerAoi.MoveObject(obj.first, p, itype.first));
       obj.second = p;
     }
@@ -51,7 +51,7 @@ TEST(correct_1, toweraoi_obj) {
   // remove obj
   for (auto &itype : objectMap) {
     for (auto &obj : itype.second) {
-      Point p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+      PointType p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
       ASSERT_TRUE(towerAoi.RemoveObject(obj.first, itype.first));
     }
   }
@@ -83,7 +83,7 @@ TEST(correct_1, toweraoi_watcher) {
   for (int i = 0; i < size; ++i) {
     int type = rand() % maxType;
     objectMap[type][objectBegin + i] =
-        Point(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+        PointType(rand() % config.GlobalWith, rand() % config.GlobalHeight);
     ASSERT_TRUE(towerAoi.AddObject(objectBegin + i,
                                    objectMap[type][objectBegin + i], type));
   }
@@ -94,7 +94,7 @@ TEST(correct_1, toweraoi_watcher) {
     int type = rand() % maxType;
     Watcher watcher(objectBegin + i, 1);
     watcherMap[type][watcher] =
-        Point(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+        PointType(rand() % config.GlobalWith, rand() % config.GlobalHeight);
     ASSERT_TRUE(towerAoi.AddWatcher(watcher, watcherMap[type][watcher], type));
   }
   // towerAoi.ToString(std::cout);
@@ -102,7 +102,7 @@ TEST(correct_1, toweraoi_watcher) {
   // move watcher
   for (auto &itype : watcherMap) {
     for (auto &obj : itype.second) {
-      Point p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+      PointType p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
       ASSERT_TRUE(towerAoi.MoveWatcher(obj.first.obj, p, itype.first));
       obj.second = p;
     }
@@ -121,7 +121,7 @@ TEST(correct_1, toweraoi_watcher) {
   // remove obj
   for (auto &itype : objectMap) {
     for (auto &obj : itype.second) {
-      Point p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+      PointType p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
       ASSERT_TRUE(towerAoi.RemoveObject(obj.first, itype.first));
     }
   }
@@ -129,7 +129,7 @@ TEST(correct_1, toweraoi_watcher) {
   // remove watcher
   for (auto &itype : watcherMap) {
     for (auto &obj : itype.second) {
-      Point p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
+      PointType p(rand() % config.GlobalWith, rand() % config.GlobalHeight);
       ASSERT_TRUE(towerAoi.RemoveWatcher(obj.first.obj, itype.first));
     }
   }
