@@ -1,6 +1,9 @@
 aux_source_directory(. ${build_temp}cpps)
 include_directories(.)
 
+include_directories(${CMAKE_SOURCE_DIR}/src/path_search)
+include_directories(${CMAKE_SOURCE_DIR}/src/path_search/cluster/union_find)
+
 # 可执行文件
 add_executable(${build_temp} ${${build_temp}cpps} ${common_cpps})
 

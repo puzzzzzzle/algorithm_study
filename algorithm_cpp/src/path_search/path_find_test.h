@@ -12,80 +12,11 @@
 
 #include "common_includes.h"
 #include "path_find_common.h"
+#include "path_find_test_base.h"
 #include "time_gap.hpp"
-
-struct PathDataInit : public testing::Test {
-  protected:
-  DataType data{};
-  std::set<Point> setPos{};
-  bool needCheckData = false;
+struct PathDataInit : public MapDataInit {
   PathFindTask tasks{};
   std::vector<PathFindResult> results{};
-  virtual void SetUp() {}
-  virtual void TearDown() {}
-  void init_data(int x, int y) { data.init(x, y); }
-  void add_block(int x, int y) {
-    Point pos(x, y);
-    if (needCheckData) {
-      setPos.insert(pos);
-    }
-    data.set(x, y, false);
-    //    LOG_DEBUG("addBlock \t" << pos.to_string() << "\tsize\t" <<
-    //    setPos.size())
-    if (needCheckData) {
-      ASSERT_TRUE(setPos.find(pos) != setPos.end());
-      ASSERT_TRUE(!data.check(x, y));
-    }
-  };
-  void check_data() {
-    for (int x = 0; x < data.m_xLen; ++x) {
-      for (int y = 0; y < data.m_yLen; ++y) {
-        if (data.check(x, y)) {
-          ASSERT_TRUE(setPos.find(Point(x, y)) == setPos.end());
-        } else {
-          ASSERT_TRUE(setPos.find(Point(x, y)) != setPos.end());
-        }
-      }
-    }
-  }
-  void build_map_1() {
-    init_data(10, 10);
-    add_block(8, 2);
-    add_block(4, 2);
-    add_block(5, 2);
-    add_block(8, 7);
-    add_block(8, 8);
-    add_block(0, 9);
-  }
-  void build_from_string(const std::string &str) {
-    std::vector<std::string> lines{}, currLine{}, filterLine{};
-    CommonFuncs::Split(str, "\n", lines);
-    ASSERT_TRUE(lines.size() >= 3);
-    CommonFuncs::Split(lines[0], ",", currLine);
-    ASSERT_TRUE(currLine.size() == 2);
-    int xLen = atoi(currLine[0].c_str());
-    int yLen = atoi(currLine[1].c_str());
-    ASSERT_TRUE(xLen > 0 && yLen > 0);
-    init_data(xLen, yLen);
-    for (int y = 0; y < yLen; ++y) {
-      CommonFuncs::Split(lines[y + 1], ",", currLine);
-      filterLine.clear();
-      std::copy_if(currLine.begin(), currLine.end(),
-                   std::back_inserter(filterLine),
-                   [](const std::string &item) { return !item.empty(); });
-      ASSERT_TRUE(filterLine.size() == xLen);
-      for (int x = 0; x < xLen; ++x) {
-        if (filterLine[x] != "0") {
-          add_block(x, y);
-        }
-      }
-    }
-  }
-  void build_from_file(const std::string &path) {
-    auto allStr = CommonFuncs::LoadFileStr(path);
-    ASSERT_TRUE(allStr != "");
-    build_from_string(allStr);
-  }
   int load_tasks(const std::string &path) { return tasks.load(path); }
   void run_tasks() {
     for (auto &item : tasks.tasks) {
