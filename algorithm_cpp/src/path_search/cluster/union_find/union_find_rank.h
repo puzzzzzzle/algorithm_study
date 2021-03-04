@@ -11,8 +11,8 @@
 
 // TODO
 #pragma once
-
+namespace UnionFind {
 // 基础的并查集
 // rank 优化
-class UnionFindRank {
-};
+class UnionFindRank {};
+}

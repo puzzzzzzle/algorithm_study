@@ -24,6 +24,24 @@ bool in_container(const ItemType& item,
                   const FindableContainerType& container) {
   return container.find(item) != container.cend();
 }
+/*
+ * 必须的接口
+struct PathDataWrapper
+{
+    int m_xLen{}, m_yLen{};
+    inline bool valid_pos(int x, int y) const
+    bool check(int x, int y) const
+};
+struct PointT
+{
+    int x = 0;
+    int y = 0;
+    PointT() = default;
+    PointT(int _x, int _y) : x(_x), y(_y) {}
+    friend bool operator<(const CPosition& lhs, const CPosition& rhs)
+    friend bool operator==(const CPosition& lhs, const CPosition& rhs)
+};
+ */
 template <class PathDataWrapper, class PointT>
 class AStar {
   private:
@@ -123,8 +141,12 @@ class AStar {
         }
       }
     }
-    m_searchRet = 0;
-    return 0;
+    if (!in_container(m_end, m_parent)) {
+      m_searchRet = 102;
+    } else {
+      m_searchRet = 0;
+    }
+    return m_searchRet;
   }
   std::vector<Point> extract_path() {
     if (m_searchRet == 100) {

@@ -10,7 +10,7 @@
  ************************************************/
 
 #pragma once
-
+namespace UnionFind {
 // 遍历版本的实现
 class UnionFind {
   private:
@@ -54,3 +54,4 @@ class UnionFind {
     }
   }
 };
+}

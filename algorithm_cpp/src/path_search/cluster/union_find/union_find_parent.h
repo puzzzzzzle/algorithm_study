@@ -11,6 +11,7 @@
 
 #pragma once
 
+namespace UnionFind {
 // parent 优化
 class UnionFindParent {
   public:
@@ -51,3 +52,4 @@ class UnionFindParent {
     m_parent[p_root] = q_root;
   }
 };
+}  // namespace UnionFind

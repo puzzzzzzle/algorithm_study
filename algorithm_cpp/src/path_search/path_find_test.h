@@ -27,9 +27,6 @@ struct PathDataInit : public MapDataInit {
       result.ret = search.searching();
       result.result = search.extract_path();
       result.time = gap.gap();
-      if (result.ret) {
-        LOG_DEBUG("one path error " << result.to_string())
-      }
       results.push_back(result);
     }
   }

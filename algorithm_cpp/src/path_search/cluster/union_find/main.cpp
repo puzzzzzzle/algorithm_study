@@ -4,6 +4,7 @@
 #include "common_includes.h"
 #include "union_find.h"
 #include "union_find_parent.h"
+using namespace UnionFind;
 TEST(test_test, 1) { EXPECT_EQ(1, 1); }
 std::string print_sets(UnionFindParent &uf) {
   std::map<int, std::vector<int>> sets{};
@@ -22,15 +23,14 @@ TEST(union_find, 1) {
   UnionFindParent uf(count);
   uf.union_elements(0, 2);
   uf.union_elements(0, 3);
-  LOG_DEBUG("print set "<<print_sets(uf))
+  LOG_DEBUG("print set " << print_sets(uf))
 
   uf.union_elements(8, 5);
   uf.union_elements(9, 6);
-  LOG_DEBUG("print set "<<print_sets(uf))
+  LOG_DEBUG("print set " << print_sets(uf))
 
   uf.union_elements(8, 2);
-  LOG_DEBUG("print set "<<print_sets(uf))
-
+  LOG_DEBUG("print set " << print_sets(uf))
 }
 
 int main(int argc, char **argv) {

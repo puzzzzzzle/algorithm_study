@@ -36,8 +36,11 @@ struct CPosition {
 };
 template <typename Payload>
 struct PathDataWrapperTemplate {
-  int m_xLen{}, m_yLen{};
+  private:
   Payload** m_data{};
+
+  public:
+  int m_xLen{}, m_yLen{};
   PathDataWrapperTemplate(int x, int y) : m_xLen(x), m_yLen(y) { init(x, y); }
   PathDataWrapperTemplate() {}
   void init(int inX, int inY) {

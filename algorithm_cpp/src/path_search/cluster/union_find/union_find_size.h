@@ -10,7 +10,7 @@
  ************************************************/
 // TODO
 #pragma once
-
+namespace UnionFind {
 // size 优化
-class UnionFindSize {
-};
+class UnionFindSize {};
+}

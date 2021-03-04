@@ -4,9 +4,8 @@
 #include "common_includes.h"
 #include "path_find_test_base.h"
 #include "union_find_connect.h"
-using ConnectAnalize =
-    UnionFindConnectCluster::UnionFindConnectCluster<DataType, Point,
-                                                     UnionFindParent>;
+using ConnectAnalize = UnionFindConnectCluster::UnionFindConnectCluster<
+    DataType, Point, UnionFind::UnionFindParent>;
 
 struct ConnectTestBase : public MapDataInit {
   ConnectAnalize conn{};
