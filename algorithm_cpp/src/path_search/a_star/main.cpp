@@ -1,6 +1,7 @@
 //
 // Created by tao on 19-1-17.
 //
+#define PAHT_DEBUG_INFO
 #include "common_includes.h"
 #include "a_star.h"
 #include "path_find_common.h"

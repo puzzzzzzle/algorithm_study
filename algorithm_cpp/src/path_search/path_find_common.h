@@ -61,7 +61,7 @@ struct PathDataWrapperTemplate {
     }
   }
   inline bool valid_pos(int x, int y) const {
-    if (x < 0 || y < 0 || x >= m_yLen || y >= m_yLen) {
+    if (x < 0 || y < 0 || x >= m_xLen || y >= m_yLen) {
       return false;
     }
     return true;

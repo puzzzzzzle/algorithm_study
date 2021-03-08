@@ -10,7 +10,8 @@
  ************************************************/
 
 #pragma once
-#include "union_find_parent.h"
+#include <map>
+#include <vector>
 namespace UnionFindConnectCluster {
 template <class PathDataWrapperT, class PointT, class UnionFindT>
 class UnionFindConnectCluster {

@@ -30,6 +30,11 @@ struct PathDataInit : public MapDataInit {
       results.push_back(result);
     }
   }
+  void build_worse_case() {
+    init_data(400, 400);
+    add_block(0, 1);
+    add_block(1, 0);
+  }
   std::string get_report() {
     std::ostringstream oss{};
     for (auto &item : results) {
@@ -79,4 +84,14 @@ TEST_F(PathDataInit, pathFind_all) {
     }
   }
   closedir(dir_ptr);
+}
+TEST_F(PathDataInit, worse_400_400) {
+  build_worse_case();
+  CPosition p1(0, 0), p2(399, 399);
+
+  TimeGap gap{};
+  PathFindType search(p2, p1, &data);
+  auto ret = search.searching();
+  ASSERT_TRUE(ret != 0);
+  LOG_INFO("time use (us)" << gap.gap() <<"\t(s)\t"<<gap.gapSec())
 }

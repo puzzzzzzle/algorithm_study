@@ -66,7 +66,7 @@ class AStar {
   // 小顶堆
   std::priority_queue<OpenItem, std::vector<OpenItem>, std::greater<OpenItem>>
       m_open{};
-  std::vector<Point> m_close{};
+  std::set<Point> m_close{};
   std::map<Point, Point> m_parent{};
   std::map<Point, double> m_g{};
   const PathData* const m_data{};
@@ -118,18 +118,31 @@ class AStar {
     m_g[m_start] = 0;
     m_g[m_end] = INFINITY;
     m_open.push(OpenItem(f(m_start), m_start));
+#ifdef PAHT_DEBUG_INFO
+    int count{};
+#endif
     // start
     while (!m_open.empty()) {
       // 当前点
       auto curr_pos = m_open.top().m_pos;
       m_open.pop();
-      m_close.push_back(curr_pos);
-
+      m_close.insert(curr_pos);
+#ifdef PAHT_DEBUG_INFO
+      ++count;
+      if (count % 1000 == 0) {
+        LOG_INFO("now at " << count << "\tclose\t" << m_close.size()
+                           << "\topen\t" << m_open.size() << "\tparent\t"
+                           << m_parent.size() << "\tg\t" << m_g.size())
+      }
+#endif
       if (curr_pos == m_end) {
         break;
       }
       // 处理每个邻居
       for (auto& curr_neighbor : get_neighbor(curr_pos)) {
+        if (in_container(curr_neighbor, m_close)) {
+          continue;
+        }
         auto new_cost = m_g[curr_pos] + cost(curr_pos, curr_neighbor);
         if (!in_container(curr_neighbor, m_g)) {
           m_g[curr_neighbor] = INFINITY;

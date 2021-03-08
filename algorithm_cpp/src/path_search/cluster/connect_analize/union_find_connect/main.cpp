@@ -4,6 +4,8 @@
 #include "common_includes.h"
 #include "path_find_test_base.h"
 #include "union_find_connect.h"
+#include "union_find_parent.h"
+
 using ConnectAnalize = UnionFindConnectCluster::UnionFindConnectCluster<
     DataType, Point, UnionFind::UnionFindParent>;
 
