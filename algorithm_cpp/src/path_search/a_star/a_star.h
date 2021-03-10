@@ -1,11 +1,14 @@
 /************************************************
- * @author khalidzhang
- * @email khalidzhang@tencent.com
- * @desc 简单的A*实现
- * @time 2021/2/27
- * @file a_star.h
+ * @author puzzzzzzle
+ * @email 2359173906@qq.com
+ * @desc
+ * @time 2021/3/10
+ * @file jps.h
  * @version
+ * version        author            desc
+ * 1.0            puzzzzzzle       create
  ************************************************/
+
 #pragma once
 #include <algorithm>
 #include <cmath>
@@ -106,12 +109,13 @@ class AStar {
   public:
   int searching() {
     if (m_start == m_end) {
-      m_searchRet = 100;
+      m_result.push_back(m_start);
+      m_result.push_back(m_end);
       return 0;
     }
     if (!valid_pos(m_start.x, m_start.y) || !valid_pos(m_end.x, m_end.y)) {
       m_searchRet = 101;
-      return -100;
+      return m_searchRet;
     }
     // init
     m_parent[m_start] = m_start;
@@ -162,8 +166,8 @@ class AStar {
     return m_searchRet;
   }
   std::vector<Point> extract_path() {
-    if (m_searchRet == 100) {
-      return {m_start, m_end};
+    if(!m_result.empty()){
+      return m_result;
     }
     if (m_searchRet) {
       return {};

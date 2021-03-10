@@ -81,6 +81,7 @@ TEST_F(ConnectTest, conn_3) {
 }
 
 int main(int argc, char **argv) {
+  std::cerr << strerror(24) << std::endl;
   int iRet = 0;
   iRet = beforeRun();
   if (iRet) {
