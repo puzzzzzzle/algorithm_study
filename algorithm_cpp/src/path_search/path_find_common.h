@@ -3,6 +3,13 @@
 //
 
 #pragma once
+#include <string>
+#include <ostream>
+#include <sstream>
+#include <vector>
+#include "common_includes.h"
+#include "common_funcs.h"
+
 struct CPosition {
   int x = 0;
   int y = 0;

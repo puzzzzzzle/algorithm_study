@@ -41,11 +41,12 @@ struct PointT
     friend bool operator==(const CPosition& lhs, const CPosition& rhs)
 };
  */
+#include "path_find_common.h"
 template <class PathDataWrapper, class PointT>
 class JPS {
   private:
-  using PathData = PathDataWrapper;
-  using Point = PointT;
+  using PathData = DataType;
+  using Point = CPosition;
   using CPoint = const Point;
   Point m_start{}, m_end{};
   const PathData* const m_data{};
