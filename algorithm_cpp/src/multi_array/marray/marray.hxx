@@ -1220,7 +1220,7 @@ View<T, isConst, A>::operator()
         + static_cast<std::size_t>(elementAccessHelper(sizeof...(args)+1, args...)) ];
 }
 
-/// Get the number of data items.
+/// Take the number of data items.
 ///
 /// \return Size.
 ///
@@ -1231,7 +1231,7 @@ View<T, isConst, A>::size() const
     return geometry_.size();
 }
 
-/// Get the dimension.
+/// Take the dimension.
 ///
 /// Not well-defined if the data pointer is 0.
 ///
@@ -1245,7 +1245,7 @@ View<T, isConst, A>::dimension() const
     return geometry_.dimension();
 }
 
-/// Get the shape in one dimension.
+/// Take the shape in one dimension.
 ///
 /// \param dimension Dimension
 /// \return Shape in that dimension.
@@ -1263,7 +1263,7 @@ View<T, isConst, A>::shape
     return geometry_.shape(dimension);
 }
 
-/// Get a constant iterator to the beginning of the shape vector.
+/// Take a constant iterator to the beginning of the shape vector.
 ///
 /// \return iterator.
 /// \sa shapeEnd()
@@ -1277,7 +1277,7 @@ View<T, isConst, A>::shapeBegin() const
     return geometry_.shapeBegin();
 }
 
-/// Get a constant iterator to the end of the shape vector.
+/// Take a constant iterator to the end of the shape vector.
 ///
 /// \return iterator.
 /// \sa shapeBegin()
@@ -1291,7 +1291,7 @@ View<T, isConst, A>::shapeEnd() const
     return geometry_.shapeEnd();
 }
 
-/// Get the strides in one dimension.
+/// Take the strides in one dimension.
 ///
 /// \param dimension Dimension
 /// \return Stride in that dimension.
@@ -1309,7 +1309,7 @@ View<T, isConst, A>::strides
     return geometry_.strides(dimension);
 }
 
-/// Get a constant iterator to the beginning of the strides vector.
+/// Take a constant iterator to the beginning of the strides vector.
 ///
 /// \return iterator.
 /// \sa stridesEnd()
@@ -1323,7 +1323,7 @@ View<T, isConst, A>::stridesBegin() const
     return geometry_.stridesBegin();
 }
 
-/// Get a constant iterator to the end of the strides vector.
+/// Take a constant iterator to the end of the strides vector.
 ///
 /// \return iterator.
 /// \sa stridesBegin()
@@ -1337,7 +1337,7 @@ View<T, isConst, A>::stridesEnd() const
     return geometry_.stridesEnd();
 }
 
-/// Get the coordinate order used for scalar indexing and iterators.
+/// Take the coordinate order used for scalar indexing and iterators.
 ///
 /// \return CoordinateOrder. enum: FirstMajorOrder, LastMajorOrder
 ///
@@ -1503,7 +1503,7 @@ View<T, isConst, A>::operator=
     return *this;
 }
 
-/// Get a sub-view with the same coordinate order.
+/// Take a sub-view with the same coordinate order.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1524,7 +1524,7 @@ View<T, isConst, A>::view
     view(bit, sit, coordinateOrder(), out);
 }
 
-/// Get a sub-view.
+/// Take a sub-view.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1552,7 +1552,7 @@ View<T, isConst, A>::view
         data_+offset, internalCoordinateOrder);
 }
 
-/// Get a sub-view with the same coordinate order.
+/// Take a sub-view with the same coordinate order.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1574,7 +1574,7 @@ View<T, isConst, A>::view
     return v;
 }
 
-/// Get a sub-view.
+/// Take a sub-view.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1599,7 +1599,7 @@ View<T, isConst, A>::view
     return v;
 }
 
-/// Get a sub-view to constant data with the same coordinate
+/// Take a sub-view to constant data with the same coordinate
 /// order.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
@@ -1621,7 +1621,7 @@ View<T, isConst, A>::constView
     constView(bit, sit, coordinateOrder(), out);
 }
 
-/// Get a sub-view to constant data.
+/// Take a sub-view to constant data.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1651,7 +1651,7 @@ View<T, isConst, A>::constView
         internalCoordinateOrder);
 }
 
-/// Get a sub-view to constant data with the same coordinate
+/// Take a sub-view to constant data with the same coordinate
 /// order.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
@@ -1674,7 +1674,7 @@ View<T, isConst, A>::constView
     return v;
 }
 
-/// Get a sub-view to constant data.
+/// Take a sub-view to constant data.
 ///
 /// \param bit Iterator to the beginning of a coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1699,7 +1699,7 @@ View<T, isConst, A>::constView
     return v;
 }
 
-/// Get a sub-view.
+/// Take a sub-view.
 ///
 /// \param b Initializer list defining the coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1721,7 +1721,7 @@ View<T, isConst, A>::view
     view(b.begin(), s.begin(), internalCoordinateOrder, out);
 }
 
-/// Get a sub-view with the same coordinate order.
+/// Take a sub-view with the same coordinate order.
 ///
 /// \param b Initializer list coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1741,7 +1741,7 @@ View<T, isConst, A>::view
     view(b.begin(), s.begin(), coordinateOrder(), out);
 }
 
-/// Get a sub-view to constant data.
+/// Take a sub-view to constant data.
 ///
 /// \param b Initializer list coordinate sequence
 /// that determines the start position of the sub-view.
@@ -1763,7 +1763,7 @@ View<T, isConst, A>::constView
     constView(b.begin(), s.begin(), internalCoordinateOrder, out);
 }
 
-/// Get a sub-view to constant data with the same coordinate
+/// Take a sub-view to constant data with the same coordinate
 /// order.
 ///
 /// \param b Initializer list coordinate sequence
@@ -1817,7 +1817,7 @@ View<T, isConst, A>::reshape
     testInvariant();
 }
 
-/// Get a reshaped View.
+/// Take a reshaped View.
 /// 
 /// Two conditions have to be fulfilled:
 /// - The new and the old shape must have the same size.
@@ -1865,7 +1865,7 @@ View<T, isConst, A>::reshape
     reshape(shape.begin(), shape.end());
 }
 
-/// Get a reshaped View.
+/// Take a reshaped View.
 /// 
 /// Two conditions have to be fulfilled:
 /// - The new and the old shape must have the same size.
@@ -1886,7 +1886,7 @@ View<T, isConst, A>::reshapedView
     return reshapedView(shape.begin(), shape.end());
 }
 
-/// Get a View where one coordinate is bound to a value.
+/// Take a View where one coordinate is bound to a value.
 ///
 /// Binds one coordinate to a certain value. This reduces the
 /// dimension by 1.
@@ -1972,7 +1972,7 @@ View<T, isConst, A>::squeeze()
     testInvariant();
 }
 
-/// Get a View where all singleton dimensions have been removed by
+/// Take a View where all singleton dimensions have been removed by
 /// setting their coordinates to zero.
 ///
 /// \sa squeeze(), boundView()
@@ -2050,7 +2050,7 @@ View<T, isConst, A>::permute
     testInvariant();
 }
 
-/// Get a View with permuted dimensions.
+/// Take a View with permuted dimensions.
 ///
 /// \param begin Iterator to the beginning of a sequence which
 /// has to contain the integers 0, ..., dimension()-1 in any
@@ -2142,7 +2142,7 @@ View<T, isConst, A>::transpose()
     testInvariant();
 }
 
-/// Get a View with two dimensions exchanged.
+/// Take a View with two dimensions exchanged.
 ///
 /// \param c1 Dimension
 /// \param c2 Dimension
@@ -2163,7 +2163,7 @@ View<T, isConst, A>::transposedView
     return out;
 }
 
-/// Get a View with dimensions reversed.
+/// Take a View with dimensions reversed.
 ///
 /// \return View with dimensions reversed.
 /// \sa transpose(), permute(), permutedView(), shift(),
@@ -2211,7 +2211,7 @@ View<T, isConst, A>::shift
     testInvariant();
 }
 
-/// Get a View which dimensions cycle shifted.
+/// Take a View which dimensions cycle shifted.
 ///
 /// \param n Number of positions to shift
 /// \sa shift(), permute(), permutedView(), transpose(), transposedView()
@@ -2228,7 +2228,7 @@ View<T, isConst, A>::shiftedView
     return out;
 }
 
-/// Get an iterator to the beginning.
+/// Take an iterator to the beginning.
 ///
 /// \return Iterator.
 /// \sa end()
@@ -2242,7 +2242,7 @@ View<T, isConst, A>::begin()
     return Iterator<T, isConst, A>(*this, 0);
 }
 
-/// Get the end-iterator.
+/// Take the end-iterator.
 ///
 /// \return Iterator.
 /// \sa begin()
@@ -2255,7 +2255,7 @@ View<T, isConst, A>::end()
     return Iterator<T, isConst, A>(*this, geometry_.size());
 }
 
-/// Get an iterator to the beginning.
+/// Take an iterator to the beginning.
 ///
 /// \return Iterator.
 /// \sa end()
@@ -2268,7 +2268,7 @@ View<T, isConst, A>::begin() const
     return Iterator<T, true>(*this, 0);
 }
 
-/// Get the end-iterator.
+/// Take the end-iterator.
 ///
 /// \return Iterator.
 /// \sa begin()
@@ -2282,7 +2282,7 @@ View<T, isConst, A>::end() const
     return Iterator<T, true>(*this, geometry_.size());
 }
 
-/// Get a reserve iterator to the beginning.
+/// Take a reserve iterator to the beginning.
 ///
 /// \return Iterator.
 /// \sa rend()
@@ -2294,7 +2294,7 @@ View<T, isConst, A>::rbegin()
     return reverse_iterator(end());
 }
 
-/// Get the reverse end-iterator.
+/// Take the reverse end-iterator.
 ///
 /// \return Iterator.
 /// \sa rbegin()
@@ -2306,7 +2306,7 @@ View<T, isConst, A>::rend()
     return reverse_iterator(begin());
 }
 
-/// Get a reserve iterator to the beginning.
+/// Take a reserve iterator to the beginning.
 ///
 /// \return Iterator.
 /// \sa rend()
@@ -2318,7 +2318,7 @@ View<T, isConst, A>::rbegin() const
     return const_reverse_iterator(end());
 }
 
-/// Get the reverse end-iterator.
+/// Take the reverse end-iterator.
 ///
 /// \return Iterator.
 /// \sa rbegin()
@@ -4098,7 +4098,7 @@ Iterator<T, isConst, A>::hasMore() const
     return index_ < view_->size();
 }
 
-/// Get the corresponding index in the View.
+/// Take the corresponding index in the View.
 ///
 /// \return index Index.
 ///
@@ -4109,7 +4109,7 @@ Iterator<T, isConst, A>::index() const
     return index_;
 }
 
-/// Get the corresponding coordinate sequence in the View.
+/// Take the corresponding coordinate sequence in the View.
 ///
 /// \param it Iterator into a container starting from which the
 /// coordinate sequence is to be written (output).

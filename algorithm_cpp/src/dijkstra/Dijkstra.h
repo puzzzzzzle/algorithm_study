@@ -189,7 +189,7 @@ class TDArray {
 template <typename VERTEX>
 static std::string GetNodeName(int index, VERTEX *nodes) {
   std::ostringstream oss{};
-  oss << nodes->Get(index) << "(" << index << ")";
+  oss << nodes->Take(index) << "(" << index << ")";
   return oss.str();
 }
 
