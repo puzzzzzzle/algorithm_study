@@ -8,4 +8,4 @@ include_directories(${CMAKE_SOURCE_DIR}/src/cluster/union_find)
 add_executable(${build_temp} ${${build_temp}cpps} ${common_cpps})
 
 #通用动态链接库
-target_link_libraries(${build_temp} pthread ${CONAN_LIBS})
+target_link_libraries(${build_temp} ${THREAD_LIB} ${CONAN_LIBS})
