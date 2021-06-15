@@ -98,11 +98,11 @@ struct ThreadSafeQueuePoolType {
  * 自动回收的对象池实现
  * 线程安全性取决于 PoolType 是否是线程安全的
  * 只回收裸指针, shared_ptr不会回收
- * @tparam Object
- * @tparam PoolType
- * @tparam KEEP_SIZE_NUM
- * @tparam Constructor
- * @tparam Destructor
+ * @tparam Object 要存储的数据类型
+ * @tparam PoolType 用于存储池子中的对象, 默认是一个有锁的队列, 多线程安全性取决于它
+ * @tparam KEEP_SIZE_NUM 决定池子保存的对象的最大大小和每次分配量
+ * @tparam Constructor 从池子中获取一个对象前总会调用的策略
+ * @tparam Destructor 一个对象共享指针计数为0 时总会调用, 无论是否放回池子
  */
 template <typename Object,
           typename ReusePoolType = ThreadSafeQueuePoolType<Object *>,

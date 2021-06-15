@@ -76,7 +76,7 @@ TEST_F(PathDataInit, pathFind_all) {
   while ((direntp = readdir(dir_ptr))) {
     std::string name = direntp->d_name;
     //    LOG_DEBUG("curr at " << name)
-    if (CommonFuncs::startsWith(name, "path_find")) {
+    if (startsWith(name, "path_find")) {
       LOG_INFO("\t\trun path find test file: " << name)
       tasks.clear();
       results.clear();

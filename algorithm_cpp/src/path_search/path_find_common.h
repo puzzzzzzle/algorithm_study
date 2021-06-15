@@ -9,38 +9,8 @@
 #include <vector>
 #include "common_includes.h"
 #include "common_funcs.h"
+#include "CommonClass.h"
 
-struct CPosition {
-  int x = 0;
-  int y = 0;
-
-  CPosition() = default;
-  CPosition(int _x, int _y) {
-    x = _x;
-    y = _y;
-  }
-  std::string to_string() const {
-    std::ostringstream oss{};
-    oss << "[" << x << "," << y << "]";
-    return oss.str();
-  }
-  static int compare(const CPosition& lhs, const CPosition& rhs) {
-    if (lhs.x != rhs.x) {
-      return lhs.x - rhs.x;
-    }
-    return lhs.y - rhs.y;
-  }
-  friend bool operator<(const CPosition& lhs, const CPosition& rhs) {
-    return compare(lhs, rhs) < 0;
-  }
-  friend bool operator==(const CPosition& lhs, const CPosition& rhs) {
-    return compare(lhs, rhs) == 0;
-  }
-  friend std::ostream& operator<<(std::ostream& os, const CPosition& pos) {
-    os << pos.to_string();
-    return os;
-  }
-};
 template <typename Payload>
 struct PathDataWrapperTemplate {
   private:
@@ -108,17 +78,17 @@ struct PathFindTask {
   // TODO 包含预估结果
   PathFindTask() = default;
   int load(const std::string& path) {
-    auto allStr = CommonFuncs::LoadFileStr(path);
+    auto allStr = LoadFileStr(path);
     std::vector<std::string> lines{}, currLine{};
     CALL_IF_TRUE_RETURN(allStr == "")
-    CommonFuncs::Split(allStr, "\n", lines);
+    Split(allStr, "\n", lines);
     CALL_IF_TRUE_RETURN(lines.size() == 0)
     mapPath = lines[0];
     for (int i = 1; i < lines.size(); ++i) {
       if (lines[i] == "") {
         continue;
       }
-      CommonFuncs::Split(lines[i], ",", currLine);
+      Split(lines[i], ",", currLine);
       CALL_IF_TRUE_RETURN(currLine.size() != 4)
       tasks.push_back(std::make_pair(
           Point(atoi(currLine[0].c_str()), atoi(currLine[1].c_str())),

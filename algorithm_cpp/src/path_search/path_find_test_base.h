@@ -63,16 +63,16 @@ struct MapDataInit : public testing::Test {
   }
   void build_from_string(const std::string &str) {
     std::vector<std::string> lines{}, currLine{}, filterLine{};
-    CommonFuncs::Split(str, "\n", lines);
+    Split(str, "\n", lines);
     ASSERT_TRUE(lines.size() >= 3);
-    CommonFuncs::Split(lines[0], ",", currLine);
+    Split(lines[0], ",", currLine);
     ASSERT_TRUE(currLine.size() == 2);
     int xLen = atoi(currLine[0].c_str());
     int yLen = atoi(currLine[1].c_str());
     ASSERT_TRUE(xLen > 0 && yLen > 0);
     init_data(xLen, yLen);
     for (int y = 0; y < yLen; ++y) {
-      CommonFuncs::Split(lines[y + 1], ",", currLine);
+      Split(lines[y + 1], ",", currLine);
       filterLine.clear();
       std::copy_if(currLine.begin(), currLine.end(),
                    std::back_inserter(filterLine),
@@ -86,7 +86,7 @@ struct MapDataInit : public testing::Test {
     }
   }
   void build_from_file(const std::string &path) {
-    auto allStr = CommonFuncs::LoadFileStr(path);
+    auto allStr = LoadFileStr(path);
     ASSERT_TRUE(allStr != "");
     build_from_string(allStr);
   }
