@@ -1,3 +1,6 @@
+#include <string>
+#include <common_includes.h>
+
 class OperatorLogClass {
   public:
   std::string name{};
